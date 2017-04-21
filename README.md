@@ -1,24 +1,7 @@
-# README
+# Movie Theater Reviews
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Build Status](https://codeship.com/projects/fbf9b0d0-0851-0135-f433-5a4d12ba7a86/status?branch=master)
+![Code Climate](https://codeclimate.com/github/Greg-Rose/movie-theater-reviews.png)
+![Coverage Status](https://coveralls.io/repos/Greg-Rose/movie-theater-reviews/badge.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A website for reviewing movie theaters.
