@@ -10,9 +10,9 @@ require 'rails_helper'
 #   - I get a message confirming I'm signed out
 
 feature 'user signs out' do
-  let!(:user) {
+  let!(:user) do
     create(:user)
-  }
+  end
 
   scenario 'successfully sign out' do
     sign_in user
