@@ -23,3 +23,19 @@
       url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
       url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+body {
+  background: #FAFAFA;
+}
+
+nav.navbar{
+  margin-bottom: 0px;
+}
+
+#main-div {
+  margin-top: 20px;
+}
+
+#devise-errors {
+  padding-left: 12px;
+}
