@@ -23,6 +23,7 @@ feature 'user deletes account' do
 
     expect(page).to have_content 'Your account has been deleted.'
     expect(page).to_not have_content 'Sign Out'
-    expect(User.count).to be 0
+    expect(User.where(deleted_at: nil)).to eq []
+    expect(User.last.deleted_at).to_not be_nil
   end
 end
