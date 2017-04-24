@@ -61,7 +61,7 @@
         <a data-toggle="dropdown" class="dropdown-toggle">Delete Account <span class="caret"></span></a>
         <ul class="dropdown-menu" id="delete-button-ul">
           <li id="delete-button-li">
-            <%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-xs" %>
+            <%= button_to "Delete My Account", registration_path(resource_name), method: :delete, class: "btn btn-danger btn-xs" %>
           </li>
         </ul>
       </div>
