@@ -3,7 +3,7 @@ module DeviseHelper
     return '' if resource.errors.empty?
 
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-    
+
     html = <<-HTML
     <div class="alert alert-danger">
       <ul id="devise-errors">
