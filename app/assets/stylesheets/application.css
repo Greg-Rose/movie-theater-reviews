@@ -39,3 +39,11 @@ nav.navbar{
 #devise-errors {
   padding-left: 12px;
 }
+
+#delete-button-ul {
+  min-width: 124px;
+}
+
+#delete-button-li {
+  text-align: center;
+}
