@@ -53,7 +53,7 @@ class StateSeeder
     ["WI", "Wisconsin"],
     ["WV", "West Virginia"],
     ["WY", "Wyoming"]
-  ]
+  ].freeze
   def self.seed!
     STATES.each do |state_info|
       abbreviation, name = state_info

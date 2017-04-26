@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :movie_theaters
-  
+
   validates :first_name, presence: true
   validates :last_name,  presence: true
   validates :username,  presence: true
