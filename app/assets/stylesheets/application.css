@@ -56,3 +56,11 @@ nav.navbar{
 .field_with_errors {
   display: inline;
 }
+
+.review-theater-title {
+  padding-left: 24px;
+}
+
+.theater-show-name {
+  margin-top: 5px;
+}

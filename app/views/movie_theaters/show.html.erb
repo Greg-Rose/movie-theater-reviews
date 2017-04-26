@@ -1,13 +1,19 @@
-<h2><%= @movie_theater.name %></h2>
-<p>
-  <%= @movie_theater.address %>
-</p>
-<p>
-  <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
-</p>
+<div class="well well-lg col-lg-12">
+  <div class="col-lg-6">
+    <h2 class="theater-show-name"><%= @movie_theater.name %></h2>
+    <p>
+      <% if !@movie_theater.address.empty? %>
+        <%= @movie_theater.address %>
+        <br>
+      <% end %>
+      <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
+    </p>
+    <% if @movie_theater.website %>
+      <%= link_to "Theater's Website", url_to_external(@movie_theater.website) %>
+    <% end %>
+  </div>
+</div>
 
-<% if @movie_theater.website %>
-  <%= link_to @movie_theater.website, url_to_external(@movie_theater.website) %>
-<% end %>
-
-<h3>Review This Theater</h3>
+<div class="col-lg-12">
+  <h3 class="review-theater-title">Review This Theater</h3>
+</div>
