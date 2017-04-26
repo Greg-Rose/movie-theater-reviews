@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>MovieTheaterReviews</title>
 
     <%= csrf_meta_tags %>
@@ -27,6 +27,11 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+            <% if user_signed_in? %>
+              <li><%= link_to "Add Movie Theater", new_movie_theater_path %></li>
+            <% end %>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if !user_signed_in? %>
               <li><%= link_to "Sign In", new_user_session_path %></li>

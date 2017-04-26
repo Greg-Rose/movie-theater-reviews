@@ -1,0 +1,13 @@
+<h2><%= @movie_theater.name %></h2>
+<p>
+  <%= @movie_theater.address %>
+</p>
+<p>
+  <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
+</p>
+
+<% if @movie_theater.website %>
+  <%= link_to @movie_theater.website, url_to_external(@movie_theater.website) %>
+<% end %>
+
+<h3>Review This Theater</h3>

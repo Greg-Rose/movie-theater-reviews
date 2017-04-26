@@ -1,1 +1,7 @@
 <h1>Movie Theaters</h1>
+
+<ul>
+  <% @movie_theaters.each do |theater| %>
+    <li><%= link_to theater.name, movie_theater_path(theater) %></li>
+  <% end %>
+</ul>

@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424221133) do
+ActiveRecord::Schema.define(version: 20170425175958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movie_theaters", force: :cascade do |t|
+    t.string   "name",                 null: false
+    t.string   "address"
+    t.string   "city",                 null: false
+    t.integer  "state_id",             null: false
+    t.string   "zipcode",    limit: 5
+    t.string   "website"
+    t.integer  "user_id",              null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["state_id"], name: "index_movie_theaters_on_state_id", using: :btree
+    t.index ["user_id"], name: "index_movie_theaters_on_user_id", using: :btree
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name",                   null: false
+    t.string   "abbreviation", limit: 2, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["abbreviation"], name: "index_states_on_abbreviation", unique: true, using: :btree
+    t.index ["name"], name: "index_states_on_name", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                          null: false
