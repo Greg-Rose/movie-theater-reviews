@@ -52,7 +52,7 @@ feature 'user adds new theater' do
     expect(page).to have_content 'New Movie Theater Added!'
     expect(page).to have_content 'Showcase Cinemas'
     expect(page).to have_content 'Foxboro, MA 01234'
-    expect(page).to have_link 'www.example.com'
+    expect(page).to have_link 'Theater\'s Website'
     expect(page).to have_content 'Review This Theater'
   end
 

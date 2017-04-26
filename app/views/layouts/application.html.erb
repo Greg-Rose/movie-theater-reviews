@@ -28,6 +28,7 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to "Movie Theaters", movie_theaters_path %></li>
             <% if user_signed_in? %>
               <li><%= link_to "Add Movie Theater", new_movie_theater_path %></li>
             <% end %>
