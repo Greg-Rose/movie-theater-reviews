@@ -36,7 +36,7 @@ nav.navbar{
   margin-top: 20px;
 }
 
-#devise-errors {
+.flash-errors {
   padding-left: 12px;
 }
 
@@ -46,4 +46,9 @@ nav.navbar{
 
 #delete-button-li {
   text-align: center;
+}
+
+.panel-form-title {
+  padding-left: 30px;
+  padding-right: 30px;
 }
