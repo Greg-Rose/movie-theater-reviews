@@ -52,3 +52,7 @@ nav.navbar{
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.field_with_errors {
+  display: inline;
+}
