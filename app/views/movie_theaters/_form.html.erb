@@ -1,0 +1,42 @@
+<%= form_for(@movie_theater) do |f| %>
+  <%= render 'shared/flash_messages' if !flash.empty? %>
+
+  <div class="form-group col-md-12">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name of Movie Theater" %>
+  </div>
+
+  <div class="form-group col-md-12">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control", placeholder: "Address" %>
+  </div>
+
+  <div class="form-group col-md-4">
+    <%= f.label :city %>
+    <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+  </div>
+
+  <div class="form-group col-md-4">
+    <%= f.label :state_id %>
+    <%= f.collection_select(:state_id, @states, :id, :name, {}, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group col-md-4">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+  </div>
+
+  <div class="form-group col-md-12">
+    <%= f.label :website %>
+    <%= f.text_field :website, class: "form-control", placeholder: "Website (http://www.example.com)" %>
+  </div>
+
+  <div class="form-group col-md-12 new-edit-button-div">
+    <% if action_name == "new" || action_name == "create" %>
+      <%= f.submit "Add Movie Theater", class: "btn btn-primary" %>
+    <% end %>
+    <% if action_name == "edit" || action_name == "update" %>
+      <%= f.submit "Update Movie Theater", class: "btn btn-success" %>
+    <% end %>
+  </div>
+<% end %>

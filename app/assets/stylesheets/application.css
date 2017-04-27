@@ -64,3 +64,16 @@ nav.navbar{
 .theater-show-name {
   margin-top: 5px;
 }
+
+.update-theater-show-button-div {
+  margin-top: 10px;
+}
+
+.new-edit-button-div {
+  margin-bottom: 0px;
+}
+
+.back-link-div {
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
