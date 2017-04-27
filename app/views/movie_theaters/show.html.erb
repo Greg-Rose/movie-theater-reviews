@@ -8,8 +8,14 @@
       <% end %>
       <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
     </p>
-    <% if @movie_theater.website %>
+    <% if !@movie_theater.website.empty? %>
       <%= link_to "Theater's Website", url_to_external(@movie_theater.website) %>
+    <% end %>
+
+    <% if current_user == @movie_theater.user %>
+      <div class="update-theater-show-button-div">
+        <%= link_to "Update Theater", edit_movie_theater_path(@movie_theater), class: "btn btn-success btn-sm" %>
+      </div>
     <% end %>
   </div>
 </div>
