@@ -58,7 +58,7 @@ nav.navbar{
 }
 
 .review-theater-title {
-  padding-left: 24px;
+  display: inline-block;
 }
 
 .theater-show-name {
@@ -76,4 +76,13 @@ nav.navbar{
 .back-link-div {
   margin-top: 15px;
   margin-bottom: 0px;
+}
+
+.add-review-show-div {
+  margin-top: 15px;
+}
+
+#add-review-link {
+  margin-bottom: 6px;
+  margin-left: 20px;
 }

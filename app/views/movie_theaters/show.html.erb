@@ -21,8 +21,16 @@
 </div>
 
 <div class="col-lg-12">
-  <h3 class="review-theater-title">Review This Theater</h3>
-
+  <div class="col-lg-12">
+    <div class="col-lg-12">
+      <h3 class="review-theater-title">Reviews</h3>
+      <% if current_user && !@movie_theater.reviews.where(user: current_user).empty? %>
+        <%= link_to "Update Review", "#", class: "btn btn-primary", id: "add-review-link" %>
+      <% else %>
+        <%= link_to "Add Review", new_movie_theater_review_path(@movie_theater), class: "btn btn-primary", id: "add-review-link" %>
+      <% end %>
+    </div>
+  </div>
   <% @movie_theater.reviews.each do |review| %>
     <div class="col-lg-12">
       <div class="col-lg-8 col-md-10">

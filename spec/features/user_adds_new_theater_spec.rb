@@ -34,7 +34,7 @@ feature 'user adds new theater' do
     expect(page).to have_content 'New Movie Theater Added!'
     expect(page).to have_content 'Showcase Cinemas Foxboro'
     expect(page).to have_content 'MA'
-    expect(page).to have_content 'Review This Theater'
+    expect(page).to have_css 'h3.review-theater-title'
   end
 
   scenario 'all info submitted' do
@@ -53,7 +53,7 @@ feature 'user adds new theater' do
     expect(page).to have_content 'Showcase Cinemas'
     expect(page).to have_content 'Foxboro, MA 01234'
     expect(page).to have_link 'Theater\'s Website'
-    expect(page).to have_content 'Review This Theater'
+    expect(page).to have_css 'h3.review-theater-title'
   end
 
   scenario 'required information not provided' do
@@ -64,7 +64,7 @@ feature 'user adds new theater' do
 
     expect(page).to have_content 'can\'t be blank'
     expect(page).to have_button 'Add Movie Theater'
-    expect(page).to_not have_content 'Review This Theater'
+    expect(page).to_not have_css 'h3.review-theater-title'
   end
 
   scenario 'unable to access page when not signed in' do
