@@ -1,5 +1,5 @@
 <div class="well well-lg col-lg-12">
-  <div class="col-lg-6">
+  <div class="col-lg-7">
     <h2 class="theater-show-name"><%= @movie_theater.name %></h2>
     <p>
       <% if !@movie_theater.address.empty? %>
@@ -22,4 +22,18 @@
 
 <div class="col-lg-12">
   <h3 class="review-theater-title">Review This Theater</h3>
+
+  <% @movie_theater.reviews.each do |review| %>
+    <div class="col-lg-12">
+      <div class="col-lg-8 col-md-10">
+        <div class="well">
+          <h4><%= review.title %></h4>
+          <p>
+            <%= review.body %>
+          </p>
+          <h6><strong>Review By: <%= review.user.username %></strong></h6>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
