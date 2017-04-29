@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :review do
-    sequence(:title) { |n| "Super Cool{n}" }
+    sequence(:title) { |n| "Super Cool#{n}" }
     sequence(:body) { |n| "Etc. etc. etc. #{n}" }
 
     user
