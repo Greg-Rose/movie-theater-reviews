@@ -1,0 +1,16 @@
+<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-primary">
+    <div class="panel-heading panel-form-title">
+      <div class="panel-title">
+        <h2>Update Review Of <%= @movie_theater.name %></h2>
+      </div>
+    </div>
+    <div class="panel-body">
+      <%= render "form" %>
+
+      <div class="form-group col-md-12 back-link-div">
+        <%= link_to "Back", movie_theater_path(@movie_theater) %>
+      </div>
+    </div>
+  </div>
+</div>

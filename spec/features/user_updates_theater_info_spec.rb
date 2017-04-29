@@ -46,7 +46,7 @@ feature 'user updates theater' do
     expect(page).to have_content 'New Name'
     expect(page).to have_content 'New City'
     expect(page).to have_content 'NY'
-    expect(page).to have_content 'Review This Theater'
+    expect(page).to have_css 'h3.review-theater-title'
   end
 
   scenario 'required information not provided' do
@@ -59,7 +59,7 @@ feature 'user updates theater' do
 
     expect(page).to have_content 'can\'t be blank'
     expect(page).to have_button 'Update Movie Theater'
-    expect(page).to_not have_content 'Review This Theater'
+    expect(page).to_not have_css 'h3.review-theater-title'
   end
 
   scenario 'unable to access page when not signed in' do

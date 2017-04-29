@@ -1,4 +1,5 @@
 class MovieTheater < ApplicationRecord
+  has_many :reviews
   belongs_to :state
   belongs_to :user
 

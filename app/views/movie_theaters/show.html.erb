@@ -1,5 +1,5 @@
 <div class="well well-lg col-lg-12">
-  <div class="col-lg-6">
+  <div class="col-lg-7">
     <h2 class="theater-show-name"><%= @movie_theater.name %></h2>
     <p>
       <% if !@movie_theater.address.empty? %>
@@ -21,5 +21,33 @@
 </div>
 
 <div class="col-lg-12">
-  <h3 class="review-theater-title">Review This Theater</h3>
+  <div class="col-lg-12">
+    <div class="col-lg-12">
+      <h3 class="review-theater-title">Reviews</h3>
+      <% if current_user && !@movie_theater.reviews.where(user: current_user).empty? %>
+        <%= link_to "Update Review", edit_movie_theater_review_path(@movie_theater, @movie_theater.reviews.where(user: current_user)[0]), class: "btn btn-primary", id: "add-review-link" %>
+      <% else %>
+        <%= link_to "Add Review", new_movie_theater_review_path(@movie_theater), class: "btn btn-primary", id: "add-review-link" %>
+      <% end %>
+    </div>
+  </div>
+  <% @movie_theater.reviews.order(updated_at: :desc).each do |review| %>
+    <div class="col-lg-12">
+      <div class="col-lg-8 col-md-10">
+        <div class="well">
+          <h4><%= review.title %></h4>
+          <p>
+            <%= review.body %>
+          </p>
+          <h6>
+            <strong>Review By: <%= review.user.username %></strong> - Created On:
+            <%= review.created_at.strftime('%x') %>
+            <% if review.updated_at.strftime('%x') != review.created_at.strftime('%x') %>
+              - Updated On: <%= review.updated_at.strftime('%x') %>
+            <% end %>
+          </h6>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

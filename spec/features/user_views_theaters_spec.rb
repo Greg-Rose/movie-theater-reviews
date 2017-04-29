@@ -36,6 +36,6 @@ feature 'user views list of theaters' do
     expect(page).to have_content theaters[2].name
     expect(page).to have_content theaters[2].city
     expect(page).to have_content theaters[2].state.abbreviation
-    expect(page).to have_content 'Review This Theater'
+    expect(page).to have_css 'h3.review-theater-title'
   end
 end

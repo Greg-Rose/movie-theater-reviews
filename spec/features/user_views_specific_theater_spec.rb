@@ -30,6 +30,6 @@ feature 'user views specific theater' do
     expect(page).to have_content theater.address
     expect(page).to have_content theater.zipcode
     expect(page).to have_link "Theater's Website"
-    expect(page).to have_content 'Review This Theater'
+    expect(page).to have_css 'h3.review-theater-title'
   end
 end
