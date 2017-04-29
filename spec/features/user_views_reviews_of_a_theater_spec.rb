@@ -30,6 +30,7 @@ feature 'user views reviews of a theater' do
       expect(page).to have_content review.title
       expect(page).to have_content review.body
       expect(page).to have_content review.user.username
+      expect(page).to have_content review.created_at.strftime('%x')
     end
   end
 end
