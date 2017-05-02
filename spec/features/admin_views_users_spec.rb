@@ -35,11 +35,11 @@ feature 'admin views list of users' do
     click_link 'View Users'
     click_link users[1].username
 
-    expect(page).to have_content users[1].firstname
-    expect(page).to have_content users[1].lastname
+    expect(page).to have_content users[1].first_name
+    expect(page).to have_content users[1].last_name
     expect(page).to have_content users[1].email
     expect(page).to have_content users[1].username
-    expect(page).to have_content users[1].created_at
+    expect(page).to have_content users[1].created_at.strftime('%x')
   end
 
   scenario 'not signed in' do
@@ -49,7 +49,8 @@ feature 'admin views list of users' do
 
     visit admin_users_path
 
-    expect(page).to have_content 'You must be signed in'
+    expect(page).to have_current_path root_path
+    expect(page).to_not have_content 'Users'
   end
 
   scenario 'does\'t have admin privileges' do
@@ -60,6 +61,7 @@ feature 'admin views list of users' do
 
     visit admin_users_path
 
-    expect(page).to have_content 'You don\'t have admin privileges.'
+    expect(page).to have_current_path root_path
+    expect(page).to_not have_content 'Users'
   end
 end

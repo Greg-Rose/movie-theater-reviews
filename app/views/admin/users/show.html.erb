@@ -1,0 +1,11 @@
+<div class="well well-lg col-lg-12">
+  <div class="col-lg-7">
+    <p>
+      Username: <strong><%= @user.username %></strong><br>
+      First Name: <strong><%= @user.first_name %></strong><br>
+      Last Name: <strong><%= @user.last_name %></strong><br>
+      Email: <strong><%= @user.email %></strong><br>
+      Account Create On: <strong><%= @user.created_at.strftime('%x') %></strong>
+    </p>
+  </div>
+</div>
