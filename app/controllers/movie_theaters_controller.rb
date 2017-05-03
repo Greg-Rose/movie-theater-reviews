@@ -1,6 +1,8 @@
 class MovieTheatersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :authorize_user, only: [:edit, :update]
+  before_action :define_states, only: [:new, :create, :edit, :update]
+  before_action :authorize_admin, only: [:destroy]
 
   def index
     @movie_theaters = MovieTheater.all
@@ -11,7 +13,6 @@ class MovieTheatersController < ApplicationController
   end
 
   def new
-    @states = State.all
     @movie_theater = MovieTheater.new
   end
 
@@ -22,14 +23,12 @@ class MovieTheatersController < ApplicationController
     if @movie_theater.save
       redirect_to @movie_theater, notice: 'New Movie Theater Added!'
     else
-      @states = State.all
       flash.now[:alert] = @movie_theater.errors.full_messages
       render :new
     end
   end
 
   def edit
-    @states = State.all
     @movie_theater = MovieTheater.find(params[:id])
   end
 
@@ -38,13 +37,23 @@ class MovieTheatersController < ApplicationController
     if @movie_theater.update(movie_theater_params)
       redirect_to @movie_theater, notice: "Movie Theater Updated!"
     else
-      @states = State.all
       flash.now[:alert] = @movie_theater.errors.full_messages
       render :edit
     end
   end
 
+  def destroy
+    @movie_theater = MovieTheater.find(params[:id])
+    @movie_theater.destroy
+    flash[:notice] = "Movie Theater Deleted."
+    redirect_to movie_theaters_path
+  end
+
   private
+
+  def define_states
+    @states ||= State.all
+  end
 
   def movie_theater_params
     params.require(:movie_theater).permit(:name, :address, :city, :state_id, :zipcode, :website)
@@ -54,6 +63,12 @@ class MovieTheatersController < ApplicationController
     movie_theater = MovieTheater.find(params[:id])
     if !user_signed_in? || current_user != movie_theater.user
       redirect_to movie_theater, alert: "You Can Only Update Theaters You've Added!"
+    end
+  end
+
+  def authorize_admin
+    if !current_user || !current_user.admin?
+      redirect_to root_path
     end
   end
 end

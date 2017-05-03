@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_user_for_edit, only: [:edit, :update]
   before_action :authorize_user_for_new, only: [:new, :create]
+  before_action :authorize_admin, only: [:destroy]
 
   def new
     @movie_theater = MovieTheater.find(params[:movie_theater_id])
@@ -38,6 +39,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @movie_theater = MovieTheater.find(params[:movie_theater_id])
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to @movie_theater, notice: "Review Deleted."
+  end
+
   private
 
   def review_params
@@ -56,6 +64,12 @@ class ReviewsController < ApplicationController
     if current_user != review.user
       movie_theater = MovieTheater.find(params[:movie_theater_id])
       redirect_to movie_theater, alert: "You Can Only Update Reviews You've Written."
+    end
+  end
+
+  def authorize_admin
+    if !current_user || !current_user.admin?
+      redirect_to root_path
     end
   end
 end
