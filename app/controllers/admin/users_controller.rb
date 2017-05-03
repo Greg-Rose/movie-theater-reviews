@@ -10,6 +10,13 @@ module Admin
       @user = User.find(params[:id])
     end
 
+    def destroy
+      @user = User.find(params[:id])
+      @user.soft_delete
+      flash[:notice] = "User deleted."
+      redirect_to admin_user_path(@user)
+    end
+
     private
 
     def authorize_admin
