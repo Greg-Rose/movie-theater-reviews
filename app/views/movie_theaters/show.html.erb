@@ -51,6 +51,11 @@
               - Updated On: <%= review.updated_at.strftime('%x') %>
             <% end %>
           </h6>
+          <% if current_user.try(:admin?) %>
+            <div class="update-theater-show-button-div">
+              <%= button_to "Delete Review", movie_theater_review_path(@movie_theater, review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

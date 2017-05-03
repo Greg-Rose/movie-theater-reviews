@@ -35,7 +35,7 @@ feature 'admin deletes a review' do
     visit movie_theater_path(theater)
     click_button 'Delete Review'
 
-    expect(page).to have_content 'Review deleted.'
+    expect(page).to have_content 'Review Deleted.'
     expect(Review.where(movie_theater_id: theater.id)).to be_empty
     expect(page).to_not have_content review.title
     expect(page).to_not have_content review.body
