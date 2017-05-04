@@ -86,3 +86,7 @@ nav.navbar{
   margin-bottom: 6px;
   margin-left: 20px;
 }
+
+.no-left-padding {
+  padding-left: 0px;
+}

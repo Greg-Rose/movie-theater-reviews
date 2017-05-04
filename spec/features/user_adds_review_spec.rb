@@ -9,6 +9,7 @@ require 'rails_helper'
 #   - I must be on the show page for the theater I want to review
 #   - I can click Add Review to go to the new review page
 #   - I must provide a title for my review
+#   - I must provide a rating for the theater
 #   - I must provide the body of my review
 #   - If valid/required information is submitted, I am taken to the theaters show page and my review is now shown
 #   - If valid/required information is not submitted, I am shown an error message
@@ -35,11 +36,13 @@ feature 'user writes review' do
     visit movie_theater_path(theater)
     click_link 'Add Review'
     fill_in 'Title', with: review.title
+    choose '3'
     fill_in 'Body', with: review.body
     click_button 'Add Review'
 
     expect(page).to have_current_path movie_theater_path(theater)
     expect(page).to have_content review.title
+    expect(page).to have_content '3/5'
     expect(page).to have_content review.body
     expect(page).to have_content user.username
   end
