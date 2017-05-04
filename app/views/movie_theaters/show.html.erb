@@ -1,24 +1,30 @@
 <div class="well well-lg col-lg-12">
   <div class="col-lg-7">
     <h2 class="theater-show-name"><%= @movie_theater.name %></h2>
-    <p>
-      <% if !@movie_theater.address.empty? %>
-        <%= @movie_theater.address %>
-        <br>
+    <div class="col-lg-3 no-left-padding">
+      <p>
+        <% if !@movie_theater.address.empty? %>
+          <%= @movie_theater.address %>
+          <br>
+        <% end %>
+        <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
+      </p>
+      <% if !@movie_theater.website.empty? %>
+        <%= link_to "Theater's Website", url_to_external(@movie_theater.website) %>
       <% end %>
-      <%= "#{@movie_theater.city}, #{@movie_theater.state.abbreviation} #{@movie_theater.zipcode}" %>
-    </p>
-    <% if !@movie_theater.website.empty? %>
-      <%= link_to "Theater's Website", url_to_external(@movie_theater.website) %>
-    <% end %>
-
+    </div>
+    <div class="col-lg-3 col-lg-offset-1 no-left-padding">
+      <% if @movie_theater.rating > 0 %>
+        <p>Rating: <%= @movie_theater.rating %></p>
+      <% end %>
+    </div>
     <% if current_user == @movie_theater.user %>
-      <div class="update-theater-show-button-div">
+      <div class="col-lg-12 no-left-padding update-theater-show-button-div">
         <%= link_to "Update Theater", edit_movie_theater_path(@movie_theater), class: "btn btn-success btn-sm" %>
       </div>
     <% end %>
     <% if current_user.try(:admin?) %>
-      <div class="update-theater-show-button-div">
+      <div class="col-lg-12 no-left-padding update-theater-show-button-div">
         <%= button_to "Delete Theater", movie_theater_path(@movie_theater), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
       </div>
     <% end %>
@@ -41,6 +47,9 @@
       <div class="col-lg-8 col-md-10">
         <div class="well">
           <h4><%= review.title %></h4>
+          <% if review.rating > 0 %>
+            <h5>Rating: <strong><%= review.rating %> out of 5</strong></h5>
+          <% end %>
           <p>
             <%= review.body %>
           </p>
