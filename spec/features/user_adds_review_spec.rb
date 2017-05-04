@@ -9,6 +9,7 @@ require 'rails_helper'
 #   - I must be on the show page for the theater I want to review
 #   - I can click Add Review to go to the new review page
 #   - I must provide a title for my review
+#   - I must provide a rating for the theater
 #   - I must provide the body of my review
 #   - If valid/required information is submitted, I am taken to the theaters show page and my review is now shown
 #   - If valid/required information is not submitted, I am shown an error message
