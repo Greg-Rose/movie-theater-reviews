@@ -42,7 +42,7 @@ feature 'user writes review' do
 
     expect(page).to have_current_path movie_theater_path(theater)
     expect(page).to have_content review.title
-    expect(page).to have_content '3 out of 5'
+    expect(page).to have_content '3/5'
     expect(page).to have_content review.body
     expect(page).to have_content user.username
   end

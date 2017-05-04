@@ -14,7 +14,8 @@ class MovieTheater < ApplicationRecord
     sum = self.reviews.sum(:rating)
     count = self.reviews.where.not(rating: 0).count
     if count > 0
-      sum / count
+      average = sum.to_f / count
+      average.round(1)
     else
       0
     end

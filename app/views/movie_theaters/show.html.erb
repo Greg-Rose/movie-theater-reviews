@@ -15,7 +15,7 @@
     </div>
     <div class="col-lg-3 col-lg-offset-1 no-left-padding">
       <% if @movie_theater.rating > 0 %>
-        <p>Rating: <%= @movie_theater.rating %></p>
+        <p>Rating: <%= @movie_theater.rating %>/5</p>
       <% end %>
     </div>
     <% if current_user == @movie_theater.user %>
@@ -48,7 +48,7 @@
         <div class="well">
           <h4><%= review.title %></h4>
           <% if review.rating > 0 %>
-            <h5>Rating: <strong><%= review.rating %> out of 5</strong></h5>
+            <h5>Rating: <strong><%= review.rating %>/5</strong></h5>
           <% end %>
           <p>
             <%= review.body %>
