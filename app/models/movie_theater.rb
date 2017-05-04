@@ -11,8 +11,8 @@ class MovieTheater < ApplicationRecord
   validates :website, url: { allow_nil: true, allow_blank: true }
 
   def rating
-    sum = self.reviews.sum(:rating)
-    count = self.reviews.where.not(rating: 0).count
+    sum = reviews.sum(:rating)
+    count = reviews.where.not(rating: 0).count
     if count > 0
       average = sum.to_f / count
       average.round(1)
