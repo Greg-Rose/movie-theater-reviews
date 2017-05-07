@@ -5,9 +5,20 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index, :show]
   end
 
+  resources :reviews, except: [:index, :show] do
+    resources :votes, only: [:upvote, :downvote] do
+      collection do
+        post :upvote
+        post :downvote
+      end
+    end
+  end
+
   namespace :admin do
     resources :users, only: [:index, :show, :destroy]
   end
+
+
 
   root 'movie_theaters#index'
 end

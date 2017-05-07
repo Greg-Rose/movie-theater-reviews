@@ -90,3 +90,17 @@ body {
 .no-left-padding {
   padding-left: 0;
 }
+
+.review {
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.voting {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.voting p {
+  padding-top: 10px;
+}
