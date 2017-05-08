@@ -13,4 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require upvote.js
+//= require downvote.js
 //= require_tree .
+
+$(document).ready(function() {
+  $('.upvote').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var reviewID = this.id.split('-')[1];
+    newUpvote(reviewID);
+  });
+
+  $('.downvote').on('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var reviewID = this.id.split('-')[1];
+    newDownvote(reviewID);
+  });
+});

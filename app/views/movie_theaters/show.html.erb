@@ -15,7 +15,7 @@
     </div>
     <div class="col-lg-3 col-lg-offset-1 no-left-padding">
       <% if @movie_theater.rating > 0 %>
-        <p>Rating: <%= @movie_theater.rating %>/5</p>
+        <p>Rating: <%= @movie_theater.rating %> / 5</p>
       <% end %>
     </div>
     <% if current_user == @movie_theater.user %>
@@ -42,31 +42,39 @@
       <% end %>
     </div>
   </div>
-  <% @movie_theater.reviews.order(updated_at: :desc).each do |review| %>
-    <div class="col-lg-12">
-      <div class="col-lg-8 col-md-10">
-        <div class="well">
-          <h4><%= review.title %></h4>
-          <% if review.rating > 0 %>
-            <h5>Rating: <strong><%= review.rating %>/5</strong></h5>
-          <% end %>
-          <p>
-            <%= review.body %>
-          </p>
-          <h6>
-            <strong>Review By: <%= review.user.username %></strong> - Created On:
-            <%= review.created_at.strftime('%x') %>
-            <% if review.updated_at.strftime('%x') != review.created_at.strftime('%x') %>
-              - Updated On: <%= review.updated_at.strftime('%x') %>
-            <% end %>
-          </h6>
-          <% if current_user.try(:admin?) %>
-            <div class="update-theater-show-button-div">
-              <%= button_to "Delete Review", movie_theater_review_path(@movie_theater, review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>
+<% @movie_theater.reviews.order(updated_at: :desc).each do |review| %>
+  <div class="well col-lg-8 col-md-10 review">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <h4><%= review.title %></h4>
+      <% if review.rating > 0 %>
+        <h5>Rating: <strong><%= review.rating %> / 5</strong></h5>
+      <% end %>
+      <p>
+        <%= review.body %>
+      </p>
+      <h6>
+        <strong>Review By: <%= review.user.username %></strong> - Created On:
+        <%= review.created_at.strftime('%x') %>
+        <% if review.updated_at.strftime('%x') != review.created_at.strftime('%x') %>
+          - Updated On: <%= review.updated_at.strftime('%x') %>
+        <% end %>
+      </h6>
+      <h6>
+        <span id="vote-total-<%= review.id %>">
+          <% if review.helpful_votes > 0 %>
+            <%= pluralize(review.helpful_votes, 'person') %> found this review helpful.
+          <% end %>
+        </span>
+        Did you find this review helpful? - <%= link_to "Yes", upvote_review_votes_path(review), method: :post, id: "upvote-#{review.id}", class: "upvote" %>
+         or
+         <%= link_to "No", downvote_review_votes_path(review), method: :post, id: "downvote-#{review.id}", class: "downvote" %>
+      </h6>
+      <% if current_user.try(:admin?) %>
+        <div class="update-theater-show-button-div">
+          <%= button_to "Delete Review", movie_theater_review_path(@movie_theater, review), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger btn-sm" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -52,6 +52,8 @@
     <% if action_name == "index" || action_name == "show" || (controller_name == "registrations" && action_name == "edit") %>
       <%= render 'shared/flash_messages' %>
     <% end %>
+    <div id="flash-container">
+    </div>
 
     <div class="container" id="main-div">
       <%= yield %>

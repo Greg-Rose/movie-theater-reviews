@@ -28,8 +28,8 @@ body {
   background: #FAFAFA;
 }
 
-nav.navbar{
-  margin-bottom: 0px;
+.navbar{
+  margin-bottom: 0;
 }
 
 #main-div {
@@ -70,12 +70,12 @@ nav.navbar{
 }
 
 .new-edit-button-div {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .back-link-div {
   margin-top: 15px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .add-review-show-div {
@@ -88,5 +88,19 @@ nav.navbar{
 }
 
 .no-left-padding {
-  padding-left: 0px;
+  padding-left: 0;
+}
+
+.review {
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.voting {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.voting p {
+  padding-top: 10px;
 }
