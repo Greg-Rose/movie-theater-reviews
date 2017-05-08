@@ -61,10 +61,14 @@
         <% end %>
       </h6>
       <h6>
-        <% if review.helpful_votes > 0 %>
-          <%= pluralize(review.helpful_votes, 'person') %> found this review helpful.
-        <% end %>
-        Did you find this review helpful? - <%= link_to "Yes", upvote_review_votes_path(review), method: :post %> or <%= link_to "No", downvote_review_votes_path(review), method: :post %>
+        <span id="vote-total-<%= review.id %>">
+          <% if review.helpful_votes > 0 %>
+            <%= pluralize(review.helpful_votes, 'person') %> found this review helpful.
+          <% end %>
+        </span>
+        Did you find this review helpful? - <%= link_to "Yes", upvote_review_votes_path(review), method: :post, id: "upvote-#{review.id}", class: "upvote" %>
+         or
+         <%= link_to "No", downvote_review_votes_path(review), method: :post, id: "downvote-#{review.id}", class: "downvote" %>
       </h6>
       <% if current_user.try(:admin?) %>
         <div class="update-theater-show-button-div">
