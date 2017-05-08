@@ -14,7 +14,7 @@ function newDownvote(review_id) {
     } else {
       noun = "people";
     }
-    $("#vote-total-" + data.reviewID).text(`${data.helpfulVotes} ${noun} found this review helpful.`);
+    $("#vote-total-" + data.reviewID).text(data.helpfulVotes + ' ' + noun + ' ' + 'found this review helpful.');
     $("#flash-container").text(data.voteMessage);
     $("#flash-container").addClass("alert alert-info");
   });
