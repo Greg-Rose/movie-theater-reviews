@@ -23,7 +23,7 @@ $(document).ready(function() {
     e.stopPropagation();
 
     var reviewID = this.id.split('-')[1];
-    newUpvote(reviewID);
+    postUpvote(reviewID);
   });
 
   $('.downvote').on('click', function(e) {
@@ -31,6 +31,6 @@ $(document).ready(function() {
     e.stopPropagation();
 
     var reviewID = this.id.split('-')[1];
-    newDownvote(reviewID);
+    postDownvote(reviewID);
   });
 });

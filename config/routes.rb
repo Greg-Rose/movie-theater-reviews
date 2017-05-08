@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :searches, only: [:index]
+
   namespace :api do
     namespace :v1 do
       resources :votes, only: [:upvote, :downvote] do
