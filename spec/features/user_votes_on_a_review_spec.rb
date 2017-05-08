@@ -26,7 +26,7 @@ feature 'user votes on a review' do
     create(:review, movie_theater: theater, user: users[0])
   end
 
-  scenario 'vote cast succesfully' do
+  scenario 'upvote cast succesfully' do
     sign_in users[1]
     visit movie_theater_path(theater)
     click_link 'Yes'
@@ -36,13 +36,35 @@ feature 'user votes on a review' do
     expect(page).to have_content 'Thank you for your feedback!'
   end
 
-  scenario 'unsuccessfully try to vote the same again' do
+  scenario 'unsuccessfully try to upvote again' do
     sign_in users[1]
     visit movie_theater_path(theater)
     click_link 'Yes'
     click_link 'Yes'
 
     expect(page).to have_content '1 person'
+    expect(page).to have_content 'You can change your answer but you can\'t answer again.'
+  end
+
+  scenario 'downvote cast succesfully' do
+    sign_in users[1]
+    visit movie_theater_path(theater)
+    click_link 'No'
+
+    expect(page).to have_current_path movie_theater_path(theater)
+    expect(page).to_not have_content 'person'
+    expect(page).to_not have_content 'people'
+    expect(page).to have_content 'Thank you for your feedback!'
+  end
+
+  scenario 'unsuccessfully try to downvote again' do
+    sign_in users[1]
+    visit movie_theater_path(theater)
+    click_link 'No'
+    click_link 'No'
+
+    expect(page).to_not have_content 'person'
+    expect(page).to_not have_content 'people'
     expect(page).to have_content 'You can change your answer but you can\'t answer again.'
   end
 

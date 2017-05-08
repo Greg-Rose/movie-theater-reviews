@@ -22,7 +22,7 @@ class VotesController < ApplicationController
     else
       @vote.helpful = false
       @vote.save
-      flash[:notice] = "Thank you for your feedback."
+      flash[:notice] = "Thank you for your feedback!"
       redirect_to @vote.review.movie_theater
     end
   end
