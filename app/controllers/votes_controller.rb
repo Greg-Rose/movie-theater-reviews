@@ -6,25 +6,23 @@ class VotesController < ApplicationController
   def upvote
     if @vote.helpful == true
       flash[:alert] = "You can change your answer but you can't answer again."
-      redirect_to @vote.review.movie_theater
     else
       @vote.helpful = true
       @vote.save
       flash[:notice] = "Thank you for your feedback!"
-      redirect_to @vote.review.movie_theater
     end
+    redirect_to @vote.review.movie_theater
   end
 
   def downvote
     if @vote.helpful == false
       flash[:alert] = "You can change your answer but you can't answer again."
-      redirect_to @vote.review.movie_theater
     else
       @vote.helpful = false
       @vote.save
       flash[:notice] = "Thank you for your feedback!"
-      redirect_to @vote.review.movie_theater
     end
+    redirect_to @vote.review.movie_theater
   end
 
   private
