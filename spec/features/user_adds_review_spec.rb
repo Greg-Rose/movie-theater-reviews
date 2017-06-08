@@ -69,4 +69,17 @@ feature 'user writes review' do
     expect(page).to have_content 'need to sign in or sign up'
     expect(page).to_not have_button 'Add Review'
   end
+
+  scenario 'unsuccessfully review theater twice' do
+    sign_in user
+    visit movie_theater_path(theater)
+    click_link 'Add Review'
+    fill_in 'Title', with: review.title
+    choose '3'
+    fill_in 'Body', with: review.body
+    click_button 'Add Review'
+    visit new_movie_theater_review_path(theater)
+
+    expect(page).to have_content 'You Can Only Review A Theater Once.'
+  end
 end
