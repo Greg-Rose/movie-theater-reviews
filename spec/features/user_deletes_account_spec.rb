@@ -26,4 +26,19 @@ feature 'user deletes account' do
     expect(User.where(deleted_at: nil)).to eq []
     expect(User.last.deleted_at).to_not be_nil
   end
+
+  scenario 'tries to sign in to deleted account' do
+    sign_in user
+    visit root_path
+    click_link 'My Account'
+    click_button 'Delete My Account'
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    expect(page).to have_content 'Sorry, our records show that you deleted your account.'
+    expect(page).to have_content 'Sign In'
+    expect(page).to_not have_content 'Sign Out'
+  end
 end
