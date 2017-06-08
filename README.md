@@ -5,3 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Greg-Rose/movie-theater-reviews/badge.svg?branch=master)](https://coveralls.io/github/Greg-Rose/movie-theater-reviews?branch=master)
 
 A website for reviewing movie theaters.
+
+#### Use
+
+Go To [movie-theater-reviews.herokuapp.com](http://movie-theater-reviews.herokuapp.com)
