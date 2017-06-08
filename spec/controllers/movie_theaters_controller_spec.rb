@@ -9,6 +9,10 @@ RSpec.describe MovieTheatersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    let!(:user) do
+      create(:user)
+    end
+
     let!(:admin) do
       create(:user, admin: true)
     end
@@ -30,7 +34,9 @@ RSpec.describe MovieTheatersController, type: :controller do
 
     context "failure" do
       it "does not delete with lack of admin privileges" do
+        sign_in user
         expect { delete :destroy, params: { id: theater } }.to_not change(MovieTheater, :count)
+        expect(response).to redirect_to(root_path)
       end
     end
   end
