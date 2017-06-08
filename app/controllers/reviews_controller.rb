@@ -40,8 +40,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @movie_theater = MovieTheater.find(params[:movie_theater_id])
     @review = Review.find(params[:id])
+    @movie_theater = @review.movie_theater
     @review.destroy
     redirect_to @movie_theater, notice: "Review Deleted."
   end
